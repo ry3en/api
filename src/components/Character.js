@@ -1,24 +1,18 @@
 import React from "react";
-import "../../src/styles/character.css";
-
 const Character = ({ character }) => {
   return (
     <>
-      <div className="characterCard col">
-        <img src={character.image} alt={character.name}></img>
-        <div className="section">
-          <a>
-            <h2>{character.name}</h2>
-          </a>
-          <span class="status">
-            <span class="status__icon"></span> {character.status} -{" "}
-            {character.species©}
-          </span>
+      <div className="col-md-4 mb-4 ">
+        <div className="card">
+          <img className="card-img-top" src={character.image} alt={character.name} />
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">
+              {character.name} <p></p>
+              {character.st©atus} - {character.species}
+            </li>
+          </ul>
         </div>
       </div>
-      <div className="infoCharacter">
-
-      </div>©
     </>
   );
 };

@@ -18,7 +18,7 @@ const Characters = () => {
 
 
   const url =
-    "https://rickandmortyapi.com/api/character/?page=" + page.toString();
+    "https://rickandmortyapi.com/api/character/?name=" + name.toString() + "&page=" + page.toString();
 
   useEffect(() => {
     axios.get(url).then((response) => {
@@ -28,6 +28,18 @@ const Characters = () => {
 
   return (
     <>
+      <div className="input-group mb-3 text-center">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Nombre a buscar"
+          aria-describedby="basic-addon2"
+          name="name"
+          id="name"
+          value={name}
+          onChange={onChange}
+        />
+      </div>
       <div className="row">
         {characters.map((character) => {
           return <Character key={character.id} character={character} />;
@@ -45,7 +57,8 @@ const Characters = () => {
           <div className="col-4">
             <button
               className="btn btn-primary"
-              onClick={() => setPage(page + 1)}>
+              onClick={() => setPage(page + 1)}
+            >
               Siguiente
             </button>
           </div>

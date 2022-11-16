@@ -5,9 +5,20 @@ import Character from "./Character";
 const Characters = () => {
   const [characters, setCharacters] = useState([]);
   const [page, setPage] = useState(1);
+  const [name, setName] = useState("");
+
+
+
+  const onChange = (e) => {
+    console.log(e.target.value);
+    if (e.target.name === "name") {
+      setName(e.target.value);
+    } 
+  };
+
 
   const url =
-    "https://rickandmortyapi.com/api/character?page=" + page.toString();
+    "https://rickandmortyapi.com/api/character/?page=" + page.toString();
 
   useEffect(() => {
     axios.get(url).then((response) => {
@@ -21,15 +32,20 @@ const Characters = () => {
         {characters.map((character) => {
           return <Character key={character.id} character={character} />;
         })}
-        
+
         <div className="row justify-content-around mb-5">
           <div className="col-4">
-            <button className="btn btn-primary" onClick={() => setPage(page - 1)}>
+            <button
+              className="btn btn-primary"
+              onClick={() => setPage(page - 1)}
+            >
               Anterior
             </button>
           </div>
           <div className="col-4">
-            <button className="btn btn-primary" onClick={() => setPage(page + 1)}>
+            <button
+              className="btn btn-primary"
+              onClick={() => setPage(page + 1)}>
               Siguiente
             </button>
           </div>
